@@ -15,9 +15,9 @@ variable "sa_name" {
 }
 
 variable "source_content" {
-  type        = string
-  description = "Source content for the index.html file"
-
+    type = string
+    description = "Source content for the index.html file"
+  
 }
 
 variable "index_document" {

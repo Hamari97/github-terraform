@@ -19,11 +19,11 @@ resource "azurerm_resource_group" "rg_web" {
 # Create Storage Account
 resource "azurerm_storage_account" "sa_web" {
   name                     = "${var.sa_name}${random_string.random_string.result}"
-  resource_group_name      = azurerm_resource_group.rg_web.name
-  location                 = azurerm_resource_group.rg_web.location
+  resource_group_name      = azurerm_resource_group.rg_web
+  location                 = azurerm_resource_group.rg_web
   account_tier             = "Standard"
   account_replication_type = "LRS"
-
+  
   static_website {
     index_document = var.index_document
   }
@@ -32,12 +32,12 @@ resource "azurerm_storage_account" "sa_web" {
 
 # Add a index.html file to the Storage Account
 resource "azurerm_storage_blob" "index_html" {
-  name                   = var.index_document
-  storage_account_name   = azurerm_storage_account.sa_web.name
-  storage_container_name = "$web"
-  type                   = "Block"
-  content_type           = "text/html"
-  source_content         = "${var.source_content} \n ${upper(local.workspaces_suffix)}"
+    name = var.index_document
+    storage_account_name = azurerm_storage_account.sa_web.name
+    storage_container_name = "$web"
+    type = "Block"
+    content_type = "text/html"
+    source_content = var.source_content
 }
 
 output "primary_web_endpoint" {
