@@ -44,7 +44,7 @@ jobs:
         working-directory: ${{ env.WORKING_DIR }}          
 
       - name: Select Terraform workspace
-        run: terraform workspace select test
+        run: terraform workspace select default
         working-directory: ${{ env.WORKING_DIR }}
 
       - name: 'Terraform plan'
@@ -59,7 +59,7 @@ jobs:
         working-directory: ${{ env.WORKING_DIR }}
 
       - name: 'Terraform destroy'
-        if: github.event.inputs.action_type == 'des'
+        if: github.event.inputs.action_type == 'destroy'
         run: terraform destroy -auto-approve
         working-directory: ${{ env.WORKING_DIR }}
                     
