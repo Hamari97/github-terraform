@@ -39,7 +39,7 @@ resource "azurerm_storage_blob" "index_html" {
   storage_container_name = "$web"
   type                   = "Block"
   content_type           = "text/html"
-  source_content         = "${var.source_content}${local.workspaces_suffix}"
+  source_content         = "${var.source_content}${local.web_suffix}"
 }
 
 output "primary_web_endpoint" {
