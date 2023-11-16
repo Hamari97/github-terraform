@@ -37,6 +37,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+      - name: Select Terraform workspace
+        run: terraform workspace select test
+        working-directory: ${{ env.WORKING_DIR }}  
+      
       # Runs a single command using the runners shell
       - name: 'Terraform init'
         id: init
