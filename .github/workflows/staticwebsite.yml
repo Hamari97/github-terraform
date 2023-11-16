@@ -13,9 +13,9 @@ on:
   workflow_dispatch:
     inputs:
       action_type:
-      description: 'What action should be performed? (apply/destroy)'
-      required: true
-      default: 'apply'
+        description: 'What action should be performed? (apply/destroy)'
+        required: true
+        default: 'apply'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
