@@ -1,6 +1,6 @@
 # Resource Group for all resources
 resource "azurerm_resource_group" "rg-infra" {
-  name     = "${var.rg_name}-${var.base_name}"
+  name     = "${var.rg_name}-${var.base_name}-mh"
   location = var.location
 }
 
